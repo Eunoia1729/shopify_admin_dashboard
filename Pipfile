@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+asgiref = "==3.2.10"
+pyactiveresource = "==2.2.1"
+pytz = "==2020.1"
+six = "==1.15.0"
+sqlparse = "==0.3.1"
+Django = "==3.0.8"
+PyYAML = "==5.3.1"
+ShopifyAPI = "==8.0.1"
+
+[requires]
+python_version = "3.8"

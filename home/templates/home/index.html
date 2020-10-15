@@ -1,0 +1,75 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div id="orders-table" class="app-main__inner">
+        <div class="row shadow-lg p-3 mb-5 bg-white rounded justify-content-center">
+            <div class="col-lg-6">
+                <div class="card2">
+                    <h5 style="font-size:26px; font-family: andalus; text-align: center; margin-bottom: 30px; ! important" class="card-title justify-content-center">Orders</h5>
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr style="color:rgb(169,169,169)">
+                                <th scope="col">Order ID </th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Order Status</th>
+                                <th scope="col">Payment status</th>
+                                <th scope="col">Fulfillment status</th>
+                                <th scope="col">Return status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for order in orders %}
+                          <tr>
+                              <td ><strong><a class="links" href="https://{{ current_shop.domain }}/admin/orders/{{ order.id }}">{{ order.name }}</a></strong></td>
+                              <td >{{ order.total_price }} {{ order.currency }}</td>
+                              <td ><strong><a href={{ order.order_status_url }} >Status Page for {{order.name}}</a></strong></td>
+                              <td >{{ order.financial_status }}</td>
+                              <td >{{ order.fulfillment_status }}</td>
+                              {% if order.financial_status == "partially_refunded" or order.financial_status == "refunded" %}
+                                <td > Refunded </td>
+                              {% else %}
+                                <td > N.A </td>
+                              {% endif %}
+                          </tr>
+                          {% endfor %}                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="products-table" class="app-main__inner">
+        <div class="row shadow-lg p-3 mb-5 bg-white rounded justify-content-center">
+            <div class="col-lg-6">
+                <div class="card2">
+                    <h5 style="font-size:26px; font-family: andalus; text-align: center; margin-bottom: 30px; ! important" class="card-title">Products</h5>
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr style="color: rgb(169,169,169)">
+                                <th scope="col">Product Image</th>
+                                <th scope="col">SKU </th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Stock Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for product in products %}
+                          <tr>
+                            {% if product.images %}
+                              <td > <img class = "p-img" src="{{ product.images.0.small }}" /> </td>
+                            {% else %}
+                              <td > No image </td>
+                            {% endif %}
+                              <td >{{ product.variants.0.sku }}</td>
+                              <td ><strong><a href="https://{{ current_shop.domain }}/admin/products/{{ product.id }}">{{ product.title }}</strong></td>
+                              <td >{{ product.price_range }} {{ current_shop.currency }}</a></td>
+                              <td >{{ product.variants.0.inventory_quantity  }}</td>
+                          </tr>
+                          {% endfor %}
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

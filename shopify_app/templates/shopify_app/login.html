@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div id="orders-table" class="app-main__inner">
+    <form style="font-size:60px; margin-bottom: 30px; ! important" action="{% url 'shopify_app_authenticate' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-lg btn-block"><strong>LOGIN TO GEEKSTORE ADMIN</strong></button>
+    </form>
+    <form action="https://geekstore101.myshopify.com/" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary btn-lg btn-block"><strong>VISIT THE STORE</strong></button>
+    </form>
+</div>
+{% endblock %}
