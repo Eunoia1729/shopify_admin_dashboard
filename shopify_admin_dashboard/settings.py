@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # Debug is off unless DJANGO_DEBUG=1 is set.
 DEBUG = os.environ.get('DJANGO_DEBUG', '') == '1'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
