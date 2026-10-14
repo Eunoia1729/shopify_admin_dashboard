@@ -6,14 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-asgiref = "==3.2.10"
-pyactiveresource = "==2.2.1"
-pytz = "==2020.1"
-six = "==1.15.0"
-sqlparse = "==0.3.1"
-Django = "==3.1.14"
-PyYAML = "==5.4"
+asgiref = ">=3.8"
+pyactiveresource = ">=2.2.2"
+pytz = "*"
+six = ">=1.16"
+sqlparse = ">=0.5.4"
+Django = ">=5.2.18,<5.3"
+PyYAML = ">=6.0.2"
 ShopifyAPI = "==8.0.1"
 
 [requires]
-python_version = "3.8"
+python_version = "3.11"
